@@ -22,12 +22,14 @@ new Vue({
     createContact() {
       const { ...contact } = this.form;
       this.form.name = this.form.value = "";
-      this.contacts.push({ ...contact, id: Date.now() });
+      this.contacts.push({ ...contact, id: Date.now(), marked: false });
     },
     markContact(id) {
       const contact = this.contacts.find((c) => c.id === id);
       contact.marked = true;
     },
-    removeContact(id) {},
+    removeContact(id) {
+      this.contacts = this.contacts.filter((c) => c.id != id);
+    },
   },
 });
