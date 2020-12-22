@@ -13,6 +13,11 @@ new Vue({
       ],
     };
   },
+  computed: {
+    canCreate() {
+      return this.form.name.trim() && this.form.value.trim();
+    },
+  },
   methods: {
     createContact() {
       const { ...contact } = this.form;
@@ -21,11 +26,8 @@ new Vue({
     },
     markContact(id) {
       const contact = this.contacts.find((c) => c.id === id);
-      console.log(id);
-      console.log(contact);
       contact.marked = true;
-      console.log(contact.marked);
     },
-    removeContact() {},
+    removeContact(id) {},
   },
 });
